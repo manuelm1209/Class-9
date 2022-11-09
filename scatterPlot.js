@@ -1,9 +1,9 @@
 export const scatterPlot = () => {
-    let widht;
+    let width;
     let height;
     let data;
     let xValue;
-    let yValus;
+    let yValue;
     let margin;
 
     const my = (selection) => {
@@ -57,10 +57,10 @@ export const scatterPlot = () => {
             .call(d3.axisBottom(x));
     };
 
-    my.widht = function (_) {
+    my.width = function (_) {
         return arguments.length
         ? ((width = +_), my)
-        : widht;
+        : width;
     }
 
     my.height = function (_) {

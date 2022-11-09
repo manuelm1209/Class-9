@@ -28,11 +28,12 @@ const svg = d3.select('body').append('svg')
 const main = async () => {
     const data = await d3.csv(csvUrl, parseRow);
 
-    svt.call(scatterPlot().widht(width).height(height).data(data))
+    svg.call(scatterPlot().width(width).height(height).data(data)
     // Columns for the range.
     .xValue((d) => d.petal_length)
     .yValue((d) => d.sepal_length)
     // d3 margin convention.
     .margin({top: 20, right: 20, bottom: 40, left:50})
+    );
 };
 main();
