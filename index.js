@@ -27,13 +27,33 @@ const svg = d3.select('body').append('svg')
 // This is a better way to import data.
 const main = async () => {
     const data = await d3.csv(csvUrl, parseRow);
-
-    svg.call(scatterPlot().width(width).height(height).data(data)
+    const plot = scatterPlot()
+    .width(width)
+    .height(height)
+    .data(data)
     // Columns for the range.
     .xValue((d) => d.petal_length)
     .yValue((d) => d.sepal_length)
     // d3 margin convention.
     .margin({top: 20, right: 20, bottom: 40, left:50})
-    );
+    svg.call(plot);
+
+    const columns = [
+        'petal_width',
+        'sepal_width',
+        'petal_length',
+        'sepal_length'
+    ];
+
+    let i = 0;
+
+    setInterval(() => {
+        console.log(columns[i % columns.length]);
+        plot.xValue((d) => d[columns[i % columns.length]])
+        svg.call(plot);
+        i++;
+    }, 2000);
+
+
 };
 main();
