@@ -48,11 +48,11 @@ const main = async () => {
     let i = 0;
 
     setInterval(() => {
-        console.log(columns[i % columns.length]);
+        console.log(i % columns.length);
         plot.xValue((d) => d[columns[i % columns.length]])
         svg.call(plot);
         i++;
-    }, 2000);
+    }, 5000);
 
 
 };
